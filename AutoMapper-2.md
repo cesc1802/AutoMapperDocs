@@ -73,7 +73,7 @@ class UserVm {
 
 * Đừng quên `Mapper.createMap(User, UserVm);` ở bài trước nhé. Bài này chúng ta chỉ cần thêm 1 tẹo nữa thôi là code chạy ngon lành à
 ```javascript
-Mapper.createMap(User, UserVm).forMember(s => s.roleName, mapFrom(d => d.role.name));
+Mapper.createMap(User, UserVm).forMember(d => d.roleName, mapFrom(s => s.role.name));
 ```
 * Việc còn lại cũng chẳng còn gì. Anh em backend chỉ việc vểnh râu lên nhận kết quả thôi `let userInfo = Mapper.map(userRepo.findOne(id, {relations: ['role']}), UserVm);`. Lúc này kết quả trông sẽ như sau nhé:
 ```javascript
