@@ -13,7 +13,7 @@ class Role {
 
   @Column('varchar2', { name: 'name', nullable: true, length: 50 })
   @AutoMap()
-  name: string | null;
+  description: string | null;
 }
 ```
 
@@ -52,7 +52,7 @@ class User {
       roleId: 1,
       role: {
         id: 1,
-        name: 'staff'
+        description: 'staff'
       }
     }
   ```
@@ -73,9 +73,9 @@ class UserVm {
 
 * Đừng quên `Mapper.createMap(User, UserVm);` ở bài trước nhé. Bài này chúng ta chỉ cần thêm 1 tẹo nữa thôi là code chạy ngon lành à
 ```javascript
-Mapper.createMap(User, UserVm).forMember(d => d.roleName, mapFrom(s => s.role.name));
+Mapper.createMap(User, UserVm).forMember(d => d.roleName, mapFrom(s => s.role.description));
 ```
-* Việc còn lại cũng chẳng còn gì. Anh em backend chỉ việc vểnh râu lên nhận kết quả thôi `let userInfo = Mapper.map(userRepo.findOne(id, {relations: ['role']}), UserVm);`. Lúc này kết quả trông sẽ như sau nhé:
+* Việc còn lại cũng chẳng còn gì. Anh em backend chỉ việc vểnh râu lên nhận kết quả thôi `let userInfo = Mapper.map(userRepo.findOne(id, { relations: ['role'] } ), UserVm);`. Lúc này kết quả trông sẽ như sau nhé:
 ```javascript
 {
   id: 1,
