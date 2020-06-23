@@ -58,7 +58,7 @@ class User {
       password: '123456',
       email: 'admin@gmail.com',
       firstName: 'Cesc',
-      lastName: 'Nguyễn'
+      lastName: 'Nguyễn',
       roleId: 1,
       role: {
         id: 1,
