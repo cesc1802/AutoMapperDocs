@@ -99,7 +99,7 @@ Mapper.createMap(User, UserVm)
 }
 ```
 
-* Giải thích qua một chút cho các bạn hiểu tại sao khi `createMap` mình lại thêm 1 đoạn code kia nhé. Đầu tiên, forMember nhận vào 2 tham số, tham số thứ nhất là member trong source class (class `UserVm`), tham số thứ 2 là 1 member từ destination class (class `User`). Các bạn có thể hiểu nôm na là ***map vào đâu*** và ***giá trị là gì***
+* Giải thích qua một chút cho các bạn hiểu tại sao khi `createMap` mình lại thêm 1 đoạn code kia nhé. Đầu tiên, forMember nhận vào 2 tham số, tham số thứ nhất là member trong destination class (class `UserVm`), tham số thứ 2 là 1 member từ source class (class `User`). Các bạn có thể hiểu nôm na là ***cái gì cần được map*** và ***thiết lập map như thế nào***
 
 * Nhìn có vẻ ngon ăn phết rồi nhỉ. Tuy nhiên, sẽ có một vấn đề khi `role` trong class `User` mà có giá trị undefined thì sao (team Frontend nó lại được dịp xỉ vả chứ sao nữa :3). Tuy nhiên các bạn đừng lo, ***AutoMapper*** sẽ giúp bạn xử lý trường hơp này. Mình sẽ chia sẻ ở bài viết sau nhé. Cảm ơn các bạn đã đọc hết bài của mình, nếu thấy hay và hữu ích hay chia sẻ và star cho thư viện này trên github nhé các bạn :D
 
