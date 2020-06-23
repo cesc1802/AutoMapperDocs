@@ -30,7 +30,15 @@ class User {
 
   @Column('nvarchar2', { name: 'USER_NAME', nullable: true, length: 100 })
   @AutoMap()
-  userName: string | null;
+  email: string | null;
+
+  @Column('nvarchar2', { name: 'USER_NAME', nullable: true, length: 100 })
+  @AutoMap()
+  firstName: string | null;
+
+  @Column('nvarchar2', { name: 'USER_NAME', nullable: true, length: 100 })
+  @AutoMap()
+  lastName: string | null;
 
   @Column('number', { primary: true, name: 'ROLE_ID', precision: 20, scale: 0 })
   @AutoMap()
@@ -48,7 +56,9 @@ class User {
     {
       id: 1,
       password: '123456',
-      userName: 'admin',
+      email: 'admin@gmail.com',
+      firstName: 'Cesc',
+      lastName: 'Nguyễn'
       roleId: 1,
       role: {
         id: 1,
@@ -64,7 +74,10 @@ class UserVm {
   id: number;
 
   @AutoMap()
-  userName: string;
+  email: string;
+
+  @AutoMap()
+  fullName: string;
 
   @AutoMap()
   roleName: string;
@@ -73,7 +86,9 @@ class UserVm {
 
 * Đừng quên `Mapper.createMap(User, UserVm);` ở bài trước nhé. Bài này chúng ta chỉ cần thêm 1 tẹo nữa thôi là code chạy ngon lành à
 ```javascript
-Mapper.createMap(User, UserVm).forMember(d => d.roleName, mapFrom(s => s.role.description));
+Mapper.createMap(User, UserVm)
+  .forMember(d => d.roleName, mapFrom(s => s.role.description))
+  .forMember(d => d.fullName, mapFrom(s => `${s.firstName} ${s.lastName}`));
 ```
 * Việc còn lại cũng chẳng còn gì. Anh em backend chỉ việc vểnh râu lên nhận kết quả thôi `let userInfo = Mapper.map(userRepo.findOne(id, { relations: ['role'] } ), UserVm);`. Lúc này kết quả trông sẽ như sau nhé:
 ```javascript
