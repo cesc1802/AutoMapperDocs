@@ -94,7 +94,8 @@ Mapper.createMap(User, UserVm)
 ```javascript
 {
   id: 1,
-  userName: 'admin',
+  email: 'admin@gmail.com',
+  fullName: 'Cesc Nguyễn',
   roleName: 'staff'
 }
 ```
